@@ -31,19 +31,13 @@ int _printf(const char *format, ...)
             switch (format[i + 1])
             {
                 case 'c':
-                    result += print_char(va_arg(args, int));
+                    result += _putchar(va_arg(args, int));
                     break;
                 case 's':
                     result += print_strings(va_arg(args, char *));
                     break;
                 case '%':
                     result += _putchar('%');
-                    break;
-                case 'd':
-                    result += print_decimal(va_arg(args, int));
-                    break;
-                case 'i':
-                    result += print_decimal(va_arg(args, int));
                     break;
                 default:
                     break;
