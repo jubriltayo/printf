@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
-
+#include <unistd.h>
 /**
  * _printf - function that prints output to screen
  * @format: format specifier
@@ -48,4 +48,60 @@ int _printf(const char *format, ...)
     va_end(args);
     
    return (result);
+}
+
+/* _putchar */
+#include <unistd.h>
+
+/**
+ * _putchar - prints out a character
+ * @c: character
+ * 
+ * Return: int 
+ */
+
+int _putchar(char c)
+{
+    return (write(1, &c, 1));
+}
+
+/* print_decimal */
+/**
+ * print_decimal - prints integer values
+ * @num: integer to be printed
+ * 
+ * Return: int 
+ */
+
+/* print_string */
+int print_strings(char *string)
+{
+       int i; 
+       int total = 0;
+       for (i = 0; string[i] != '\0'; i++)
+               total = total + _putchar(string[i]);
+        
+       return (total);
+}
+
+int print_decimal(int num)
+{
+    int result = 0;
+    
+    //if number is negative 
+    if (num < 0)
+    {
+        result += _putchar('-');
+        num = num * -1;
+    }
+
+    //print numbers using recursion by removing last digits and print the remaining, then finally print the last digit
+    if (num/10)
+    {
+        result += print_decimal(num/10);
+    }
+
+    result += _putchar(num%10 + '0');
+
+    return (result);
 }
