@@ -1,4 +1,4 @@
-#ifdef PRINT_F
+#ifndef PRINT_F
 #define PRINT_F
 
 /* main function */
