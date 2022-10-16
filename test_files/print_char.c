@@ -12,5 +12,4 @@ int print_char(char c)
 
 	x = _putchar(c);
 	return (c);
-	return (0);
 }
