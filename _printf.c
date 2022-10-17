@@ -30,17 +30,20 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] != ' ')
 		{
-			case 'c':
-			result += _putchar(va_arg(args, int));
-			break;
-			case 's':
-			result += print_strings(va_arg(args, char *));
-			break;
-			case '%':
-			result += _putchar('%');
-			break;
-			default:
-			break;
+			switch (format[i + 1])
+			{
+				case 'c':
+					result += _putchar(va_arg(args, int));
+					break;
+				case 's':
+					result += print_strings(va_arg(args, char *));
+				break;
+				case '%':
+				result += _putchar('%');
+				break;
+				default:
+				break;
+			}
 		}
 		i += 2;   /*jump out of the specifier*/
 	}
@@ -98,7 +101,7 @@ int print_decimal(int num)
 	/**
 	 * print numbers using recursion by removing last digits and
 	 * print the remaining, then finally print the last digit
-	 * /
+	 */
 	if (num / 10)
 	{
 		result += print_decimal(num / 10);
